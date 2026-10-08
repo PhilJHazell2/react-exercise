@@ -3,8 +3,12 @@
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "esnext",
     "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     /* EMIT RULES */
     "noEmit": true,
@@ -24,7 +28,7 @@
     /* OTHER OPTIONS */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "useDefineForClassFields": true,
@@ -42,7 +46,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".eslintrc.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
