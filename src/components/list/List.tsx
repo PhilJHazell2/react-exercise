@@ -1,14 +1,14 @@
 "use client";
 import { Text, Loader } from "@cruk/cruk-react-components";
-import { NasaSearchParams, ItemsType } from "../../types";
+import { type NasaSearchParams, type ItemsType } from "../../types";
 import { urlNasaSearch } from "../../services/nasa";
 import { ResultCard } from "../result-card/ResultCard";
 
 import { useNasaQuery } from "./useNasaQuery";
 import { StyledGrid } from "./Grid";
 
-/** 
- * TODO: 
+/**
+ * TODO:
  *  - Seperate presentational and container components, for example by using a useList hook which handles the data fetching and logic
  *  - Handle errors from the NASA API not just no results found
  *  - Pagination!
@@ -16,10 +16,7 @@ import { StyledGrid } from "./Grid";
  */
 
 export function List({ values }: { values: NasaSearchParams | undefined }) {
-
-  const urlNasaSearchUrl = values
-    ? urlNasaSearch(values as NasaSearchParams)
-    : "";
+  const urlNasaSearchUrl = values ? urlNasaSearch(values) : "";
 
   const { data, isLoading } = useNasaQuery(urlNasaSearchUrl);
 
@@ -28,7 +25,7 @@ export function List({ values }: { values: NasaSearchParams | undefined }) {
   }
 
   if (isLoading) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   if (!data?.collection.items.length) {
@@ -36,7 +33,7 @@ export function List({ values }: { values: NasaSearchParams | undefined }) {
   }
 
   return (
-    <StyledGrid> 
+    <StyledGrid>
       {data?.collection.items.map((item: ItemsType, index: number) => (
         <ResultCard key={index} item={item} />
       ))}

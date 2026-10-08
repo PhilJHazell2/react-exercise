@@ -1,13 +1,10 @@
-import { expect, test, Page } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 const NASA_SEARCH_ROUTE = "https://images-api.nasa.gov/search**";
 
 // Test PNG so next/image requests never hit the network
-const PIXEL_PNG = Buffer.from(
-  "TEST",
-  "base64",
-);
+const PIXEL_PNG = Buffer.from("TEST", "base64");
 
 const imageItem = (id: string, title: string) => ({
   href: `https://images-assets.nasa.gov/image/${id}/collection.json`,

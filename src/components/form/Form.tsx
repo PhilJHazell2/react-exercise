@@ -1,5 +1,5 @@
 import { Box, Button, TextField, Select } from "@cruk/cruk-react-components";
-import { NasaSearchParams } from "../../types";
+import { type NasaSearchParams } from "../../types";
 import { MEDIA_TYPE_OPTIONS } from "./Form.schema";
 
 import { useNasaForm } from "./useNasaForm";
@@ -9,8 +9,8 @@ type SearchFormProps = {
 };
 
 export function Form({ onSearch }: SearchFormProps) {
-  
-  const { register, errors, isValid, isSubmitting, onSubmit } = useNasaForm(onSearch);
+  const { register, errors, isValid, isSubmitting, onSubmit } =
+    useNasaForm(onSearch);
 
   return (
     <>
@@ -22,7 +22,7 @@ export function Form({ onSearch }: SearchFormProps) {
             label="Keywords"
             required
           />
-          </Box>
+        </Box>
         <Box marginBottom="m">
           <Select
             {...register("mediaType")}
@@ -48,7 +48,9 @@ export function Form({ onSearch }: SearchFormProps) {
           />
         </Box>
         <Box marginBottom="m">
-          <Button type="submit" disabled={!isValid || isSubmitting}>Submit</Button>
+          <Button type="submit" disabled={!isValid || isSubmitting}>
+            Submit
+          </Button>
         </Box>
       </form>
     </>

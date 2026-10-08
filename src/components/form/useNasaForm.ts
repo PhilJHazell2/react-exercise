@@ -1,8 +1,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { NasaSearchParams } from "../../types";
+import { type NasaSearchParams } from "../../types";
 
-import { formSchema, FormInput, FormValues, initialData, toSearchParams } from "./Form.schema";
+import {
+  formSchema,
+  type FormInput,
+  type FormValues,
+  initialData,
+  toSearchParams,
+} from "./Form.schema";
 
 export function useNasaForm(onSearch: (params: NasaSearchParams) => void) {
   const {
@@ -18,7 +24,9 @@ export function useNasaForm(onSearch: (params: NasaSearchParams) => void) {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = handleSubmit((values) => onSearch(toSearchParams(values)));
+  const onSubmit = (event?: React.BaseSyntheticEvent) => {
+    void handleSubmit((values) => onSearch(toSearchParams(values)))(event);
+  };
 
   return {
     register,

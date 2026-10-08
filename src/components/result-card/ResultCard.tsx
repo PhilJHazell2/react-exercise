@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNasaAssetQuery } from "../list/useNasaQuery";
-import { ItemsType } from "../../types";
+import { type ItemsType } from "../../types";
 
 import { StyledImage } from "./StyledImage";
 import { Video } from "./Video";
@@ -13,8 +13,8 @@ const StyledResultCard = styled.div`
   text-align: center;
 `;
 
-/** 
- * TODO: 
+/**
+ * TODO:
  *  - Improve seperation of concerns as has been done in the Form component, for example by moving styled components to their own files, using a useResultCard hook for logic, etc.
  *  - Consider adding proper error handling and loading states for media assets
  *  - Implement lazy loading for media assets to improve performance
@@ -39,7 +39,12 @@ export const ResultCard = ({ item }: { item: ItemsType }) => {
       }
       return (
         <StyledResultCard>
-          <StyledImage src={imageHref} alt="Nasa Image" width={500} height={500} />
+          <StyledImage
+            src={imageHref}
+            alt="Nasa Image"
+            width={500}
+            height={500}
+          />
           <p>{itemData.title}</p>
         </StyledResultCard>
       );

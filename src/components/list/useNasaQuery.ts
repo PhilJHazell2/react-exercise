@@ -1,18 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
+import { type NasaResponse } from "../../types";
+
+const fetchJson = async <T>(url: string): Promise<T> => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Network response was not ok");
+  return (await res.json()) as T;
+};
 
 export const useNasaQuery = (urlNasaSearchUrl: string) => {
   return useQuery(
     ["nasaSearch", urlNasaSearchUrl],
-    () => fetch(urlNasaSearchUrl).then((res) => { if (!res.ok) throw new Error("Network response was not ok"); return res.json(); }),
-    { enabled: !!urlNasaSearchUrl.length }
+    () => fetchJson<NasaResponse>(urlNasaSearchUrl),
+    { enabled: !!urlNasaSearchUrl.length },
   );
 };
 
 export const useNasaAssetQuery = (urlAsset: string) => {
   return useQuery(
     ["nasaAsset", urlAsset],
-    () => fetch(urlAsset).then((res) => { if (!res.ok) throw new Error("Network response was not ok"); return res.json(); }),
-    { enabled: !!urlAsset.length }
+    () => fetchJson<string[]>(urlAsset),
+    {
+      enabled: !!urlAsset.length,
+    },
   );
 };
 
