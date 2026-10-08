@@ -8,6 +8,7 @@
     "build-no-export": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "test": "npx playwright test",
     "test:debug": "npx playwright test .src/tests --project='chromium' --workers 1 --headed --debug"
   },
@@ -32,11 +33,12 @@
     "@typescript-eslint/eslint-plugin": "^7",
     "@typescript-eslint/parser": "^7",
     "eslint": "^8.56.0",
+    "eslint-config-next": "^14.2.35",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^28.2.0",
-    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-jest": "^28.2.0",    "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-promise": "^6",
+    "jest": "^30.5.2",
     "prettier": "^3",
     "typescript": "^5.0.2"
   }
