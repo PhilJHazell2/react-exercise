@@ -21,6 +21,16 @@ const nextConfig = {
       // pure?: boolean,
     },
   },
+  images: {
+    remotePatterns: [ 
+      {
+        protocol: 'https',
+        hostname: 'images-assets.nasa.gov',
+        port: '',
+        pathname: '**',
+      }
+    ],
+  },
 };
 
 module.exports = nextConfig;
